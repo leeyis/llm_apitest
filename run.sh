@@ -4,6 +4,9 @@ ENV_NAME="llm_apitest"
 REQUIREMENTS_FILE="requirements.txt"
 PYTHON_SCRIPT="0_Playground.py"
 
+# 初始化Conda环境
+eval "$(conda shell.bash hook)"
+
 # 检查conda环境是否已经存在
 if conda info --envs | grep "${ENV_NAME}" > /dev/null; then
     echo "Activating environment ${ENV_NAME}"
@@ -17,6 +20,3 @@ else
         pip install -r "${REQUIREMENTS_FILE}"
     fi
 fi
-
-# 运行Python脚本
-streamlit run "${PYTHON_SCRIPT}" "$@"
